@@ -1,0 +1,13 @@
+[
+  {
+    "name": "Reminder done button",
+    "steps": [
+      {
+        "send": { "callback": "reminder:done:fakehabit:1" },
+        "expect": [
+          { "method": "answerCallbackQuery" }
+        ]
+      }
+    ]
+  }
+]

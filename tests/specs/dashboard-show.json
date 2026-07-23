@@ -1,19 +1,12 @@
 [
   {
-    "name": "My Habits",
+    "name": "My Habits — empty state",
     "steps": [
       {
+        "send": { "callback": "dashboard:show" },
         "expect": [
-          {
-            "method": "sendMessage",
-            "payload": {
-              "text": "Display compact habit dashboard"
-            }
-          }
-        ],
-        "send": {
-          "callback": "dashboard:show"
-        }
+          { "method": "editMessageText", "payload": { "text": "No habits yet — tap ➕ New Habit to create your first one." } }
+        ]
       }
     ]
   }
