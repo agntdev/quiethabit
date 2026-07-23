@@ -1,0 +1,20 @@
+[
+  {
+    "name": "New Habit",
+    "steps": [
+      {
+        "expect": [
+          {
+            "method": "sendMessage",
+            "payload": {
+              "text": "Initiate habit creation flow"
+            }
+          }
+        ],
+        "send": {
+          "callback": "habit:new"
+        }
+      }
+    ]
+  }
+]
