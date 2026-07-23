@@ -1,19 +1,59 @@
 [
   {
-    "name": "New Habit",
+    "name": "New Habit wizard — full creation flow",
     "steps": [
       {
+        "send": { "callback": "habit:new" },
         "expect": [
-          {
-            "method": "sendMessage",
-            "payload": {
-              "text": "Initiate habit creation flow"
-            }
-          }
-        ],
-        "send": {
-          "callback": "habit:new"
-        }
+          { "method": "sendMessage", "payload": { "text": "What's the habit you'd like to build?" } }
+        ]
+      },
+      {
+        "send": { "text": "Meditate" },
+        "expect": [
+          { "method": "sendMessage", "payload": { "text": "How often do you want to do \"Meditate\"?" } }
+        ]
+      },
+      {
+        "send": { "callback": "habit:caddaily" },
+        "expect": [
+          { "method": "sendMessage", "payload": { "text": "When should I remind you?" } }
+        ]
+      },
+      {
+        "send": { "callback": "habit:time20:00" },
+        "expect": [
+          { "method": "sendMessage", "payload": { "text": "Here's your new habit:\n\n📌 Meditate\n🔄 Every day\n⏰ Reminder at 8:00 PM\n\nLooks good?" } }
+        ]
+      },
+      {
+        "send": { "callback": "habit:confirmcreate" },
+        "expect": [
+          { "method": "sendMessage", "payload": { "text": "✅ \"Meditate\" created!\n\nYour habits:\n  📌 Meditate — 🔥 0 day streak" } }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "New Habit wizard — cancel at cadence",
+    "steps": [
+      {
+        "send": { "callback": "habit:new" },
+        "expect": [
+          { "method": "sendMessage", "payload": { "text": "What's the habit you'd like to build?" } }
+        ]
+      },
+      {
+        "send": { "text": "Read" },
+        "expect": [
+          { "method": "sendMessage", "payload": { "text": "How often do you want to do \"Read\"?" } }
+        ]
+      },
+      {
+        "send": { "callback": "habit:cancel" },
+        "expect": [
+          { "method": "editMessageText", "payload": { "text": "No worries — cancelled. Tap a button when you're ready." } }
+        ]
       }
     ]
   }

@@ -1,0 +1,13 @@
+[
+  {
+    "name": "Weekly recap — no habits",
+    "steps": [
+      {
+        "send": { "callback": "recap:show", "userId": 99, "chatId": 99 },
+        "expect": [
+          { "method": "editMessageText", "payload": { "text": "No habits yet — can't generate a recap until you've created some." } }
+        ]
+      }
+    ]
+  }
+]

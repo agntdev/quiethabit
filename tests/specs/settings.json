@@ -1,0 +1,30 @@
+[
+  {
+    "name": "Settings shows current preferences",
+    "steps": [
+      {
+        "send": { "callback": "settings:show" },
+        "expect": [
+          { "method": "editMessageText", "payload": { "text": "⚙️ Settings\n\n🌍 Time zone: UTC\n📅 Weekly recap day: Mon\n🎉 Celebrations: On" } }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Toggle celebrations",
+    "steps": [
+      {
+        "send": { "callback": "settings:show" },
+        "expect": [
+          { "method": "editMessageText" }
+        ]
+      },
+      {
+        "send": { "callback": "settings:togglecel" },
+        "expect": [
+          { "method": "editMessageText", "payload": { "text": "Celebration notifications turned off." } }
+        ]
+      }
+    ]
+  }
+]
